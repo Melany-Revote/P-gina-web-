@@ -3,119 +3,451 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Página Web</title>
+
+    <title>Librería Aguilar</title>
 
     <style>
-        body {
+        * {
+            box-sizing: border-box;
             margin: 0;
+            padding: 0;
+        }
+
+        body {
             font-family: Arial, sans-serif;
-            background: #f2f2f2;
+            background: #f7f3ed;
             color: #333;
         }
 
         header {
-            background: #222;
+            background: #5b3a29;
             color: white;
-            text-align: center;
-            padding: 30px;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        nav {
-            background: #444;
-            text-align: center;
-            padding: 15px;
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
         }
 
         nav a {
             color: white;
             text-decoration: none;
-            margin: 0 15px;
+            margin-left: 25px;
+            font-size: 15px;
         }
 
-        main {
-            max-width: 900px;
-            margin: 30px auto;
-            padding: 20px;
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .hero {
+            background: #e8d8c3;
+            padding: 70px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .hero-text {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 45px;
+            color: #4b2e20;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .boton {
+            display: inline-block;
+            background: #5b3a29;
+            color: white;
+            padding: 13px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .boton:hover {
+            background: #3f271c;
+        }
+
+        .libro-icono {
+            font-size: 150px;
+        }
+
+        section {
+            padding: 50px 8%;
+        }
+
+        .titulo {
+            text-align: center;
+            color: #4b2e20;
+            font-size: 30px;
+            margin-bottom: 35px;
+        }
+
+        .productos {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
         }
 
         .tarjeta {
             background: white;
-            padding: 25px;
-            margin-bottom: 20px;
             border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.12);
         }
 
-        button {
-            background: #222;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 6px;
-            cursor: pointer;
+        .portada {
+            background: #d8c1a9;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 70px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tarjeta h3 {
+            color: #5b3a29;
+            margin-bottom: 10px;
+        }
+
+        .tarjeta p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .precio {
+            font-size: 20px;
+            font-weight: bold;
+            color: #4b2e20;
+        }
+
+        .servicios {
+            background: #eee4d8;
+        }
+
+        .servicios-contenedor {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .servicio {
+            background: white;
+            padding: 25px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .servicio .icono {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .servicio h3 {
+            color: #5b3a29;
+            margin-bottom: 10px;
+        }
+
+        .contacto {
+            text-align: center;
+        }
+
+        .contacto p {
+            margin: 10px;
+            font-size: 17px;
         }
 
         footer {
-            background: #222;
+            background: #3d281d;
             color: white;
             text-align: center;
-            padding: 20px;
-            margin-top: 30px;
+            padding: 25px;
+        }
+
+        footer p {
+            margin: 5px;
+        }
+
+        @media (max-width: 768px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 0 8px;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 35px;
+            }
+
+            .productos,
+            .servicios-contenedor {
+                grid-template-columns: 1fr;
+            }
+
+            .libro-icono {
+                font-size: 100px;
+            }
         }
     </style>
 </head>
 
 <body>
 
+    <!-- ENCABEZADO -->
     <header>
-        <h1>Mi Página Web</h1>
-        <p>Proyecto publicado en GitHub Pages</p>
+
+        <div class="logo">
+            📚 Librería Aguilar
+        </div>
+
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#libros">Libros</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+
     </header>
 
-    <nav>
-        <a href="#inicio">Inicio</a>
-        <a href="#informacion">Información</a>
-        <a href="#contacto">Contacto</a>
-    </nav>
 
-    <main>
+    <!-- INICIO -->
+    <section class="hero" id="inicio">
 
-        <section id="inicio" class="tarjeta">
-            <h2>Bienvenido</h2>
+        <div class="hero-text">
+
+            <h1>
+                Un mundo de historias
+            </h1>
+
             <p>
-                Esta es mi página web creada con HTML,
-                CSS y JavaScript y publicada mediante GitHub Pages.
+                Bienvenido a Librería Aguilar, un espacio donde
+                encontrarás libros, material escolar y productos
+                para acompañar tu aprendizaje y tu pasión por la lectura.
             </p>
 
-            <button onclick="mostrarMensaje()">
-                Haz clic aquí
-            </button>
-        </section>
+            <a href="#libros" class="boton">
+                Ver nuestros libros
+            </a>
 
-        <section id="informacion" class="tarjeta">
-            <h2>Información</h2>
-            <p>
-                Este proyecto demuestra cómo subir una página web
-                a GitHub y publicarla utilizando GitHub Pages.
-            </p>
-        </section>
+        </div>
 
-        <section id="contacto" class="tarjeta">
-            <h2>Contacto</h2>
-            <p>Proyecto realizado por Melany Revote.</p>
-        </section>
+        <div class="libro-icono">
+            📖
+        </div>
 
-    </main>
+    </section>
 
+
+    <!-- LIBROS -->
+    <section id="libros">
+
+        <h2 class="titulo">
+            Libros destacados
+        </h2>
+
+        <div class="productos">
+
+            <div class="tarjeta">
+
+                <div class="portada">
+                    📕
+                </div>
+
+                <h3>
+                    Novelas
+                </h3>
+
+                <p>
+                    Historias de romance, drama, aventura y ficción.
+                </p>
+
+                <div class="precio">
+                    Desde Bs. 45
+                </div>
+
+            </div>
+
+
+            <div class="tarjeta">
+
+                <div class="portada">
+                    📗
+                </div>
+
+                <h3>
+                    Libros académicos
+                </h3>
+
+                <p>
+                    Material para estudiantes y profesionales.
+                </p>
+
+                <div class="precio">
+                    Desde Bs. 55
+                </div>
+
+            </div>
+
+
+            <div class="tarjeta">
+
+                <div class="portada">
+                    📘
+                </div>
+
+                <h3>
+                    Literatura
+                </h3>
+
+                <p>
+                    Obras clásicas y contemporáneas para todos.
+                </p>
+
+                <div class="precio">
+                    Desde Bs. 40
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SERVICIOS -->
+    <section class="servicios" id="servicios">
+
+        <h2 class="titulo">
+            Nuestros servicios
+        </h2>
+
+        <div class="servicios-contenedor">
+
+            <div class="servicio">
+
+                <div class="icono">
+                    📚
+                </div>
+
+                <h3>
+                    Venta de libros
+                </h3>
+
+                <p>
+                    Contamos con diferentes categorías de libros
+                    para estudiantes y lectores.
+                </p>
+
+            </div>
+
+
+            <div class="servicio">
+
+                <div class="icono">
+                    ✏️
+                </div>
+
+                <h3>
+                    Material escolar
+                </h3>
+
+                <p>
+                    Útiles escolares y materiales para tus actividades
+                    académicas.
+                </p>
+
+            </div>
+
+
+            <div class="servicio">
+
+                <div class="icono">
+                    🛍️
+                </div>
+
+                <h3>
+                    Pedidos
+                </h3>
+
+                <p>
+                    Puedes consultar por disponibilidad y realizar
+                    pedidos de nuestros productos.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACTO -->
+    <section class="contacto" id="contacto">
+
+        <h2 class="titulo">
+            Contáctanos
+        </h2>
+
+        <p>
+            📍 Oruro, Bolivia
+        </p>
+
+        <p>
+            📞 700 00000
+        </p>
+
+        <p>
+            ✉️ libreriaaguilar@gmail.com
+        </p>
+
+        <br>
+
+        <a href="#inicio" class="boton">
+            Volver al inicio
+        </a>
+
+    </section>
+
+
+    <!-- PIE DE PÁGINA -->
     <footer>
-        <p>© 2026 - Mi Página Web</p>
-    </footer>
 
-    <script>
-        function mostrarMensaje() {
-            alert("¡La página funciona correctamente!");
-        }
-    </script>
+        <p>
+            © 2026 Librería Aguilar
+        </p>
+
+        <p>
+            Proyecto académico - Página Web
+        </p>
+
+    </footer>
 
 </body>
 </html>
