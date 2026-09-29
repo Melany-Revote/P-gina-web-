@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Librería Aguilar</title>
+    <title>Librería Aguilar | Libros y Material Académico</title>
 
     <style>
         * {
@@ -14,205 +13,701 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background: #f7f3ed;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f7f7;
             color: #333;
         }
 
+        /* ===== HEADER ===== */
+
         header {
-            background: #5b3a29;
+            background: #4b2e20;
             color: white;
-            padding: 20px 8%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .barra-superior {
+            background: #382219;
+            padding: 8px 6%;
+            text-align: right;
+            font-size: 13px;
+        }
+
+        .navbar {
+            padding: 16px 6%;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            gap: 25px;
         }
 
         .logo {
             font-size: 25px;
             font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: #e8c39e;
+        }
+
+        .buscador {
+            flex: 1;
+            max-width: 600px;
+            display: flex;
+        }
+
+        .buscador input {
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 6px 0 0 6px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .buscador button {
+            border: none;
+            background: #d29b62;
+            padding: 0 18px;
+            cursor: pointer;
+            border-radius: 0 6px 6px 0;
+            font-size: 18px;
+        }
+
+        .acciones {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .accion {
+            background: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .carrito-btn {
+            position: relative;
+            font-size: 23px;
+        }
+
+        .contador {
+            position: absolute;
+            top: -9px;
+            right: -10px;
+            background: #d29b62;
+            color: white;
+            border-radius: 50%;
+            min-width: 19px;
+            height: 19px;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        nav {
+            background: #fff;
+            padding: 12px 6%;
+            display: flex;
+            gap: 30px;
+            border-bottom: 1px solid #ddd;
         }
 
         nav a {
-            color: white;
+            color: #444;
             text-decoration: none;
-            margin-left: 25px;
-            font-size: 15px;
+            font-size: 14px;
+            font-weight: bold;
         }
 
         nav a:hover {
-            text-decoration: underline;
+            color: #8a5738;
         }
 
+        /* ===== HERO ===== */
+
         .hero {
-            background: #e8d8c3;
-            padding: 70px 8%;
+            background: linear-gradient(110deg, #ead8c4, #f7eee5);
+            padding: 65px 8%;
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            gap: 30px;
+            align-items: center;
+            min-height: 370px;
         }
 
         .hero-text {
-            max-width: 600px;
+            max-width: 650px;
+        }
+
+        .etiqueta {
+            color: #8a5738;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            font-size: 13px;
         }
 
         .hero h1 {
-            font-size: 45px;
-            color: #4b2e20;
-            margin-bottom: 20px;
+            font-size: 46px;
+            color: #43291d;
+            margin-bottom: 18px;
         }
 
         .hero p {
-            font-size: 19px;
+            font-size: 18px;
             line-height: 1.6;
+            color: #555;
             margin-bottom: 25px;
         }
 
         .boton {
             display: inline-block;
-            background: #5b3a29;
+            background: #5b3827;
             color: white;
-            padding: 13px 25px;
+            padding: 13px 23px;
             border-radius: 6px;
             text-decoration: none;
+            border: none;
+            cursor: pointer;
             font-weight: bold;
         }
 
         .boton:hover {
-            background: #3f271c;
+            background: #382219;
         }
 
-        .libro-icono {
+        .hero-libros {
             font-size: 150px;
         }
 
-        section {
-            padding: 50px 8%;
+        /* ===== CATEGORIAS ===== */
+
+        .contenedor {
+            width: 88%;
+            max-width: 1250px;
+            margin: auto;
         }
 
-        .titulo {
+        .seccion {
+            padding: 55px 0;
+        }
+
+        .titulo-seccion {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 28px;
+        }
+
+        .titulo-seccion h2 {
+            color: #43291d;
+            font-size: 28px;
+        }
+
+        .categorias {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+        }
+
+        .categoria {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 25px 10px;
             text-align: center;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .categoria:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0,0,0,.1);
+        }
+
+        .categoria-icono {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .categoria strong {
+            display: block;
             color: #4b2e20;
-            font-size: 30px;
-            margin-bottom: 35px;
+        }
+
+        /* ===== PRODUCTOS ===== */
+
+        .filtros {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .filtro {
+            padding: 9px 16px;
+            border: 1px solid #ccc;
+            background: white;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .filtro.activo,
+        .filtro:hover {
+            background: #5b3827;
+            color: white;
         }
 
         .productos {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
         }
 
-        .tarjeta {
+        .producto {
             background: white;
-            border-radius: 10px;
-            padding: 25px;
-            text-align: center;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+            border-radius: 9px;
+            overflow: hidden;
+            border: 1px solid #ddd;
+            position: relative;
+            transition: .2s;
+        }
+
+        .producto:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 7px 20px rgba(0,0,0,.1);
+        }
+
+        .favorito {
+            position: absolute;
+            right: 12px;
+            top: 12px;
+            width: 34px;
+            height: 34px;
+            border: none;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+            font-size: 18px;
+            z-index: 2;
+        }
+
+        .favorito.activo {
+            color: #c0392b;
         }
 
         .portada {
-            background: #d8c1a9;
-            height: 180px;
+            height: 220px;
+            background: #ead8c4;
             display: flex;
-            align-items: center;
             justify-content: center;
-            font-size: 70px;
-            border-radius: 8px;
-            margin-bottom: 20px;
+            align-items: center;
+            font-size: 90px;
         }
 
-        .tarjeta h3 {
-            color: #5b3a29;
-            margin-bottom: 10px;
+        .producto-info {
+            padding: 18px;
         }
 
-        .tarjeta p {
-            color: #666;
-            margin-bottom: 15px;
+        .categoria-producto {
+            color: #999;
+            font-size: 12px;
+            margin-bottom: 7px;
+        }
+
+        .producto h3 {
+            color: #43291d;
+            margin-bottom: 8px;
+            min-height: 40px;
+        }
+
+        .autor {
+            color: #777;
+            font-size: 13px;
+            margin-bottom: 12px;
         }
 
         .precio {
+            color: #5b3827;
             font-size: 20px;
             font-weight: bold;
-            color: #4b2e20;
+            margin-bottom: 14px;
         }
+
+        .producto-botones {
+            display: flex;
+            gap: 7px;
+        }
+
+        .producto-botones button {
+            flex: 1;
+            padding: 9px 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .detalles {
+            background: white;
+            border: 1px solid #5b3827;
+            color: #5b3827;
+        }
+
+        .agregar {
+            background: #5b3827;
+            border: 1px solid #5b3827;
+            color: white;
+        }
+
+        /* ===== OFERTA ===== */
+
+        .oferta {
+            background: #4b2e20;
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .oferta h2 {
+            margin-bottom: 10px;
+        }
+
+        .oferta p {
+            color: #ead8c4;
+        }
+
+        /* ===== SERVICIOS ===== */
 
         .servicios {
-            background: #eee4d8;
-        }
-
-        .servicios-contenedor {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
+            gap: 20px;
         }
 
         .servicio {
             background: white;
             padding: 25px;
-            text-align: center;
-            border-radius: 10px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
         }
 
-        .servicio .icono {
-            font-size: 45px;
+        .servicio-icono {
+            font-size: 35px;
             margin-bottom: 15px;
         }
 
         .servicio h3 {
-            color: #5b3a29;
-            margin-bottom: 10px;
+            color: #4b2e20;
+            margin-bottom: 8px;
         }
 
-        .contacto {
-            text-align: center;
+        .servicio p {
+            color: #666;
+            line-height: 1.5;
+            font-size: 14px;
         }
 
-        .contacto p {
-            margin: 10px;
-            font-size: 17px;
-        }
+        /* ===== FOOTER ===== */
 
         footer {
-            background: #3d281d;
+            background: #382219;
             color: white;
+            padding: 45px 6% 20px;
+            margin-top: 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 35px;
+            margin-bottom: 35px;
+        }
+
+        footer h3 {
+            margin-bottom: 15px;
+        }
+
+        footer p,
+        footer a {
+            color: #ddd;
+            font-size: 14px;
+            line-height: 1.8;
+            text-decoration: none;
+            display: block;
+        }
+
+        .copyright {
+            border-top: 1px solid #634737;
+            padding-top: 20px;
             text-align: center;
-            padding: 25px;
+            color: #bbb;
+            font-size: 13px;
         }
 
-        footer p {
-            margin: 5px;
+        /* ===== CARRITO ===== */
+
+        .carrito-panel {
+            position: fixed;
+            right: -430px;
+            top: 0;
+            width: 400px;
+            max-width: 95%;
+            height: 100vh;
+            background: white;
+            z-index: 2000;
+            box-shadow: -5px 0 20px rgba(0,0,0,.25);
+            transition: .3s;
+            display: flex;
+            flex-direction: column;
         }
 
-        @media (max-width: 768px) {
+        .carrito-panel.abierto {
+            right: 0;
+        }
 
-            header {
-                flex-direction: column;
-                gap: 15px;
+        .carrito-header {
+            background: #4b2e20;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .cerrar {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        .carrito-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .item-carrito {
+            display: flex;
+            gap: 12px;
+            border-bottom: 1px solid #ddd;
+            padding: 15px 0;
+        }
+
+        .item-icono {
+            width: 55px;
+            height: 65px;
+            background: #ead8c4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+        }
+
+        .item-info {
+            flex: 1;
+        }
+
+        .item-info h4 {
+            margin-bottom: 6px;
+            color: #4b2e20;
+        }
+
+        .cantidad {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 7px;
+        }
+
+        .cantidad button {
+            width: 25px;
+            height: 25px;
+            border: 1px solid #bbb;
+            background: white;
+            cursor: pointer;
+        }
+
+        .eliminar {
+            background: none;
+            border: none;
+            color: #b33;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .carrito-footer {
+            padding: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+        .total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .btn-comprar {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            background: #5b3827;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .vacio {
+            text-align: center;
+            padding: 50px 15px;
+            color: #888;
+        }
+
+        /* ===== MODAL ===== */
+
+        .modal-fondo {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.55);
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-fondo.mostrar {
+            display: flex;
+        }
+
+        .modal {
+            background: white;
+            width: 600px;
+            max-width: 100%;
+            border-radius: 10px;
+            padding: 30px;
+            position: relative;
+        }
+
+        .modal-cerrar {
+            position: absolute;
+            right: 15px;
+            top: 12px;
+            border: none;
+            background: none;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        .modal h2 {
+            color: #4b2e20;
+            margin-bottom: 15px;
+        }
+
+        .modal p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #666;
+        }
+
+        /* ===== NOTIFICACION ===== */
+
+        .notificacion {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #333;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 6px;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: .3s;
+            z-index: 5000;
+        }
+
+        .notificacion.mostrar {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* ===== RESPONSIVE ===== */
+
+        @media (max-width: 950px) {
+
+            .productos {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            nav a {
-                margin: 0 8px;
+            .categorias {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 650px) {
+
+            .navbar {
+                flex-wrap: wrap;
+            }
+
+            .buscador {
+                order: 3;
+                flex-basis: 100%;
+            }
+
+            nav {
+                overflow-x: auto;
             }
 
             .hero {
-                flex-direction: column;
                 text-align: center;
+                padding: 45px 5%;
             }
 
             .hero h1 {
                 font-size: 35px;
             }
 
-            .productos,
-            .servicios-contenedor {
+            .hero-libros {
+                font-size: 90px;
+            }
+
+            .productos {
                 grid-template-columns: 1fr;
             }
 
-            .libro-icono {
-                font-size: 100px;
+            .categorias {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .servicios {
+                grid-template-columns: 1fr;
+            }
+
+            .oferta {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -220,234 +715,212 @@
 
 <body>
 
-    <!-- ENCABEZADO -->
-    <header>
+<header>
+
+    <div class="barra-superior">
+        Atención al cliente | Envíos disponibles
+    </div>
+
+    <div class="navbar">
 
         <div class="logo">
-            📚 Librería Aguilar
+            📚 Librería <span>Aguilar</span>
         </div>
 
-        <nav>
-            <a href="#inicio">Inicio</a>
-            <a href="#libros">Libros</a>
-            <a href="#servicios">Servicios</a>
-            <a href="#contacto">Contacto</a>
-        </nav>
+        <div class="buscador">
+            <input
+                type="text"
+                id="buscador"
+                placeholder="Buscar libros, autores o categorías..."
+                onkeyup="buscarLibros()"
+            >
+            <button>🔎</button>
+        </div>
 
-    </header>
+        <div class="acciones">
 
+            <button class="accion" onclick="mostrarFavoritos()">
+                ♡ Favoritos
+            </button>
 
-    <!-- INICIO -->
-    <section class="hero" id="inicio">
-
-        <div class="hero-text">
-
-            <h1>
-                Un mundo de historias
-            </h1>
-
-            <p>
-                Bienvenido a Librería Aguilar, un espacio donde
-                encontrarás libros, material escolar y productos
-                para acompañar tu aprendizaje y tu pasión por la lectura.
-            </p>
-
-            <a href="#libros" class="boton">
-                Ver nuestros libros
-            </a>
+            <button class="accion carrito-btn" onclick="abrirCarrito()">
+                🛒
+                <span class="contador" id="contador">0</span>
+            </button>
 
         </div>
 
-        <div class="libro-icono">
-            📖
+    </div>
+
+</header>
+
+<nav>
+
+    <a href="#inicio">Inicio</a>
+    <a href="#categorias">Categorías</a>
+    <a href="#libros">Libros</a>
+    <a href="#ofertas">Ofertas</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#contacto">Contacto</a>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero" id="inicio">
+
+    <div class="hero-text">
+
+        <div class="etiqueta">
+            Librería y material académico
         </div>
 
-    </section>
-
-
-    <!-- LIBROS -->
-    <section id="libros">
-
-        <h2 class="titulo">
-            Libros destacados
-        </h2>
-
-        <div class="productos">
-
-            <div class="tarjeta">
-
-                <div class="portada">
-                    📕
-                </div>
-
-                <h3>
-                    Novelas
-                </h3>
-
-                <p>
-                    Historias de romance, drama, aventura y ficción.
-                </p>
-
-                <div class="precio">
-                    Desde Bs. 45
-                </div>
-
-            </div>
-
-
-            <div class="tarjeta">
-
-                <div class="portada">
-                    📗
-                </div>
-
-                <h3>
-                    Libros académicos
-                </h3>
-
-                <p>
-                    Material para estudiantes y profesionales.
-                </p>
-
-                <div class="precio">
-                    Desde Bs. 55
-                </div>
-
-            </div>
-
-
-            <div class="tarjeta">
-
-                <div class="portada">
-                    📘
-                </div>
-
-                <h3>
-                    Literatura
-                </h3>
-
-                <p>
-                    Obras clásicas y contemporáneas para todos.
-                </p>
-
-                <div class="precio">
-                    Desde Bs. 40
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- SERVICIOS -->
-    <section class="servicios" id="servicios">
-
-        <h2 class="titulo">
-            Nuestros servicios
-        </h2>
-
-        <div class="servicios-contenedor">
-
-            <div class="servicio">
-
-                <div class="icono">
-                    📚
-                </div>
-
-                <h3>
-                    Venta de libros
-                </h3>
-
-                <p>
-                    Contamos con diferentes categorías de libros
-                    para estudiantes y lectores.
-                </p>
-
-            </div>
-
-
-            <div class="servicio">
-
-                <div class="icono">
-                    ✏️
-                </div>
-
-                <h3>
-                    Material escolar
-                </h3>
-
-                <p>
-                    Útiles escolares y materiales para tus actividades
-                    académicas.
-                </p>
-
-            </div>
-
-
-            <div class="servicio">
-
-                <div class="icono">
-                    🛍️
-                </div>
-
-                <h3>
-                    Pedidos
-                </h3>
-
-                <p>
-                    Puedes consultar por disponibilidad y realizar
-                    pedidos de nuestros productos.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- CONTACTO -->
-    <section class="contacto" id="contacto">
-
-        <h2 class="titulo">
-            Contáctanos
-        </h2>
+        <h1>
+            Todo lo que necesitas para aprender y leer
+        </h1>
 
         <p>
-            📍 Oruro, Bolivia
+            Descubre libros, novelas, textos académicos y material
+            escolar en un solo lugar.
         </p>
 
-        <p>
-            📞 700 00000
-        </p>
-
-        <p>
-            ✉️ libreriaaguilar@gmail.com
-        </p>
-
-        <br>
-
-        <a href="#inicio" class="boton">
-            Volver al inicio
+        <a href="#libros" class="boton">
+            Explorar catálogo
         </a>
 
-    </section>
+    </div>
+
+    <div class="hero-libros">
+        📚
+    </div>
+
+</section>
 
 
-    <!-- PIE DE PÁGINA -->
-    <footer>
+<!-- CATEGORIAS -->
 
-        <p>
-            © 2026 Librería Aguilar
-        </p>
+<section class="seccion" id="categorias">
 
-        <p>
-            Proyecto académico - Página Web
-        </p>
+    <div class="contenedor">
 
-    </footer>
+        <div class="titulo-seccion">
+            <h2>Explora por categoría</h2>
+        </div>
 
-</body>
-</html>
+        <div class="categorias">
+
+            <div class="categoria" onclick="filtrarCategoria('Novela')">
+                <div class="categoria-icono">📕</div>
+                <strong>Novelas</strong>
+            </div>
+
+            <div class="categoria" onclick="filtrarCategoria('Académico')">
+                <div class="categoria-icono">📘</div>
+                <strong>Académicos</strong>
+            </div>
+
+            <div class="categoria" onclick="filtrarCategoria('Infantil')">
+                <div class="categoria-icono">📗</div>
+                <strong>Infantil</strong>
+            </div>
+
+            <div class="categoria" onclick="filtrarCategoria('Tecnología')">
+                <div class="categoria-icono">💻</div>
+                <strong>Tecnología</strong>
+            </div>
+
+            <div class="categoria" onclick="filtrarCategoria('Papelería')">
+                <div class="categoria-icono">✏️</div>
+                <strong>Papelería</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PRODUCTOS -->
+
+<section class="seccion" id="libros">
+
+    <div class="contenedor">
+
+        <div class="titulo-seccion">
+
+            <h2>Catálogo de productos</h2>
+
+        </div>
+
+        <div class="filtros">
+
+            <button class="filtro activo" onclick="filtrarCategoria('Todos')">
+                Todos
+            </button>
+
+            <button class="filtro" onclick="filtrarCategoria('Novela')">
+                Novelas
+            </button>
+
+            <button class="filtro" onclick="filtrarCategoria('Académico')">
+                Académicos
+            </button>
+
+            <button class="filtro" onclick="filtrarCategoria('Infantil')">
+                Infantil
+            </button>
+
+            <button class="filtro" onclick="filtrarCategoria('Tecnología')">
+                Tecnología
+            </button>
+
+        </div>
+
+        <div class="productos" id="productos"></div>
+
+    </div>
+
+</section>
+
+
+<!-- OFERTA -->
+
+<section class="seccion" id="ofertas">
+
+    <div class="contenedor">
+
+        <div class="oferta">
+
+            <div>
+
+                <h2>
+                    Oferta de la semana
+                </h2>
+
+                <p>
+                    Obtén descuentos especiales en libros seleccionados.
+                </p>
+
+            </div>
+
+            <button class="boton" onclick="mostrarOferta()">
+                Ver ofertas
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SERVICIOS -->
+
+<section class="seccion" id="servicios">
+
+    <div class="contenedor">
+
+        <div class="titulo-seccion">
+            <h2>Servicios de Librería Ag
